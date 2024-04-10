@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Train;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Date;
 
 class PageController extends Controller
 {
@@ -20,6 +21,11 @@ class PageController extends Controller
             $train->departure_time = date("H:i", strtotime($train->departure_time));
             $train->arrival_time = date("H:i", strtotime($train->arrival_time));
 
+
+
+            // $train->departure_day = DateTime::createFromFormat("d-m-Y", $date)->format("d F Y");
+            $date = date_create($train->departure_day);
+            $train->departure_day = date_format($date, "jS F Y");
 
             if ($train->on_schedule == true) {
                 $train->on_schedule = "";
