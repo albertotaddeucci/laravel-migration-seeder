@@ -10,6 +10,8 @@
 </head>
 <body>
 
+    <h1 class="text-center py-4">Stazione</h1>
+
     @yield('content')
 
    

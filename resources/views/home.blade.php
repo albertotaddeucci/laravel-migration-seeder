@@ -6,52 +6,47 @@
 
 <div class="container">
     
-    <h1 class="text-center py-2">Stazione</h1>
-    <hr>
-    <table class="table py-3">
+    <table class="table border border-5 border-dark table-hover  ">
         <thead>
           <tr>
-            <th>Giorno di partenza </th>
-            <th>Partenza da </th>
-            <th>Arrivo a</th>
-            <th>Orario di partenza</th>
-            <th>Orario di arrivo</th>
-            <th>Treno Nº</th>
-            <th></th>
-            <th></th>
+            <th class="text-center">Giorno di partenza </th>
+            <th class="text-center ">Partenza da </th>
+            <th class="text-center ">Arrivo a</th>
+            <th class="text-center ">Orario di partenza</th>
+            <th class="text-center ">Orario di arrivo</th>
+            <th class="text-center ">Treno Nº</th>
+            <th class="text-center ">Stato</th>
             
           </tr>
         </thead>
         <tbody>
-            @foreach ($trains as $train)
-                
-                <tr>
-                    <td>
+            @foreach ($trains as $train)                
+                <tr @class(['table-warning'=> $train->on_schedule,'table-danger'=> $train->is_cancelled]) >
+                    <td class="text-center">
                         {{$train->departure_day}}
                     </td>
                     
-                    <td>
+                    <td class="text-center">
                         {{$train->departure_station}}
                     </td>
-                    <td>
+                    <td class="text-center">
                         {{$train->arrival_station}}
                     </td>
-                    <td>
+                    <td class="text-center">
                         {{$train->departure_time}}
                     </td>
-                    <td>
+                    <td class="text-center">
                         {{$train->arrival_time}}
                     </td>
                     
-                    <td>
+                    <td class="text-center">
                         {{$train->train_code}}
                     </td>
-                    <td>
+                    <td class="text-center fw-bold">
                         {{$train->on_schedule}}
-                    </td>
-                    <td>
                         {{$train->is_cancelled}}
                     </td>
+                    
                     
                                         
                 </tr>
