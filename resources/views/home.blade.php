@@ -6,8 +6,9 @@
 
 <div class="container">
     
-    <h1 class="text-center py-5">Treni</h1>
-    <table class="table">
+    <h1 class="text-center py-2">Stazione</h1>
+    <hr>
+    <table class="table py-3">
         <thead>
           <tr>
             <th>Giorno di partenza </th>
@@ -23,7 +24,7 @@
         </thead>
         <tbody>
             @foreach ($trains as $train)
-            @if ($train->departure_day > now())
+                
                 <tr>
                     <td>
                         {{$train->departure_day}}
@@ -54,7 +55,6 @@
                     
                                         
                 </tr>
-                @endif
             @endforeach
         </tbody>
       </table>

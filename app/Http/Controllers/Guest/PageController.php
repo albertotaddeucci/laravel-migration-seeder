@@ -12,7 +12,8 @@ class PageController extends Controller
 {
     public function index()
     {
-        $trains = Train::all();
+        // $trains = Train::all();
+        $trains = Train::where('departure_day', '>', now())->get();
 
         foreach ($trains as $train) {
 
@@ -24,6 +25,7 @@ class PageController extends Controller
                 $train->on_schedule = "";
             } else {
                 $train->on_schedule = "Ritardo";
+                $delayed = "table-warning";
             }
 
             if ($train->is_cancelled == true) {
@@ -33,6 +35,6 @@ class PageController extends Controller
             }
         }
 
-        return view('home', compact('trains'));
+        return view('home', compact('trains', 'delayed'));
     }
 }
