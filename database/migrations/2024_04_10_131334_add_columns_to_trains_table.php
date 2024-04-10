@@ -21,8 +21,8 @@ return new class extends Migration
             $table->date("departure_day");
             $table->string("train_code", 20)->unique();
             $table->tinyInteger("n_coaches")->nullable();
-            $table->boolean("on_schedule");
-            $table->boolean("is_cancelled");
+            $table->boolean("on_schedule")->default(true);
+            $table->boolean("is_cancelled")->default(false);
         });
     }
 
