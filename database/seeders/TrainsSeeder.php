@@ -16,28 +16,25 @@ class TrainsSeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    public function run(): void
+    public function run(Faker $faker): void
     {
-        //
-        $newTrain = new Train();
+        //        
 
-        $newTrain->company = "ciao";
-        $newTrain->departure_station = "ehi";
-        $newTrain->arrival_station = "arrivo";
-        $newTrain->departure_time = "21:00:00";
-        $newTrain->arrival_time = "22:00:00";
-        $newTrain->departure_day = "2021-01-23";
-        $newTrain->train_code = "sdv34dg34";
-        $newTrain->n_coaches = 3;
-        $newTrain->on_schedule = true;
-        $newTrain->is_cancelled = false;
+        for ($i = 0; $i < 10; $i++) {
+            $newTrain = new Train();
 
+            $newTrain->company = $faker->company();
+            $newTrain->departure_station = $faker->streetName();
+            $newTrain->arrival_station = $faker->streetName();
+            $newTrain->departure_time = $faker->time();
+            $newTrain->arrival_time = $faker->time();
+            $newTrain->departure_day = $faker->date();
+            $newTrain->train_code = $faker->bothify('?????-#####');
+            $newTrain->n_coaches = $faker->randomDigit();
+            $newTrain->on_schedule = $faker->boolean();
+            $newTrain->is_cancelled = $faker->boolean();
 
-        $newTrain->save();
-        // for($i = 0; $i < 100; $i++) {
-        //     // creiamo un'istanza della classe film (nuova riga)
-
-        // }
-
+            $newTrain->save();
+        }
     }
 }
