@@ -52,8 +52,7 @@
                         {{$train->is_cancelled}}
                     </td>
                     
-                    
-                    
+                                        
                 </tr>
                 @endif
             @endforeach

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Guest;
 use App\Http\Controllers\Controller;
 
 use App\Models\Train;
-use DateTime;
+
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -15,6 +15,10 @@ class PageController extends Controller
         $trains = Train::all();
 
         foreach ($trains as $train) {
+
+            $train->departure_time = date("H:i", strtotime($train->departure_time));
+            $train->arrival_time = date("H:i", strtotime($train->arrival_time));
+
 
             if ($train->on_schedule == true) {
                 $train->on_schedule = "";
